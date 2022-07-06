@@ -1,7 +1,46 @@
-.overflow-hidden{
-    overflow: hidden;
-}
+$overflow-property-map: (
+    "overflow": (
+        property: overflow,
+        class: "overflow",
+        values: (
+            auto: auto,
+            hidden: hidden,
+            scroll: scroll,
+            visible: visible,
+        )
+    ),
 
-.overflow-auto{
-    overflow: auto;
+    "overflow-x": (
+        property: overflow-x,
+        class: "overflow-x",
+        values: (
+            auto: auto,
+            hidden: hidden,
+            scroll: scroll,
+            visible: visible,
+        )
+    ),
+
+    "overflow-y": (
+        property: overflow-y,
+        class: "overflow-y",
+        values: (
+            auto: auto,
+            hidden: hidden,
+            scroll: scroll,
+            visible: visible,
+        )
+    )
+);
+
+@each $key, $map in $overflow-property-map {
+    $p: map-get($map, property);
+    $c: map-get($map, class);
+    $v: map-get($map, values);
+
+    @each $index, $value in $v {
+        .#{$c}-#{$index} {
+            #{$p}: #{$value} !important;
+        }
+    }
 }

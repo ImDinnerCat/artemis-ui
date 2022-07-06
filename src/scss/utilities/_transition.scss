@@ -1,29 +1,23 @@
-$transition-property-map: (
-    "transition": (
-        property: transition,
-        class: "transition",
-        values: (
-            300ms-ease: all 300ms ease,
-            300ms-ease-in: all 300ms ease-in,
-            300ms-ease-out: all 300ms ease-out,
-            300ms-ease-in-out: all 300ms ease-in-out,
+$transition-step: 12;
 
-            500ms-ease: all 500ms ease,
-            500ms-ease-in: all 500ms ease-in,
-            500ms-ease-out: all 500ms ease-out,
-            500ms-ease-in-out: all 500ms ease-in-out,
-        )
-    )
-);
+@for $i from 1 through $transition-step{
+    .transition-#{$i}00ms{
+        transition: all #{$i}00ms;
+    }
 
-@each $key, $map in $transition-property-map {
-    $p: map-get($map, property);
-    $c: map-get($map, class);
-    $v: map-get($map, values);
+    .transition-#{$i}00ms-ease{
+        transition: all #{$i}00ms ease;
+    }
 
-    @each $index, $value in $v {
-        .#{$c}-#{$index} {
-            #{$p}: #{$value} !important;
-        }
+    .transition-#{$i}00ms-ease-in{
+        transition: all #{$i}00ms ease-in;
+    }
+
+    .transition-#{$i}00ms-ease-out{
+        transition: all #{$i}00ms ease-out;
+    }
+
+    .transition-#{$i}00ms-ease-in-out{
+        transition: all #{$i}00ms ease-in-out;
     }
 }
