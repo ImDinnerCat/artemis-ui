@@ -19,7 +19,7 @@
 
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ImDinnerCat/artemis-ui?logo=github&style=for-the-badge">
 
-<img alt="GitHub" src="https://img.shields.io/github/license/ImDinnerCat/artemis-ui?label=license&style=for-the-badge">
+<img alt="GitHub" src="https://img.shields.io/github/license/ImDinnerCat/artemis-ui?label=License&style=for-the-badge">
 
 </p>
 
