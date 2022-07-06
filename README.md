@@ -82,6 +82,6 @@ At a later stage, when Artemis UI is in a higher version, I will also provide th
 
 
 ## Documentation
-You can find documentation on Artemis UI at https://artemis-ui.dnrcat.net/.
+You can find documentation on Artemis UI at https://artemis-ui.dnrcat.net/ // https://github.com/ImDinnerCat/artemis-ui/wiki.
 
 There everything is described and explained in more detail. You can also find a live demo of how different pages can look with Artemis UI.
