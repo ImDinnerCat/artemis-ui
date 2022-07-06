@@ -1,0 +1,73 @@
+$position-property-map: (
+    "position": (
+        property: position,
+        class: "position",
+        values: (
+            static: static,
+            relative: relative,
+            absolute: absolute,
+            fixed: fixed,
+            sticky: sticky
+        )
+    ),
+
+    "top": (
+        property: top,
+        class: "top",
+        values: (
+            0: 0,
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%
+        )
+    ),
+
+    "bottom": (
+        property: bottom,
+        class: "bottom",
+        values: (
+            0: 0,
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%
+        )
+    ),
+
+    "start": (
+        property: left,
+        class: "start",
+        values: (
+            0: 0,
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%
+        )
+    ),
+
+    "end": (
+        property: right,
+        class: "end",
+        values: (
+            0: 0,
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%
+        )
+    )
+);
+
+@each $key, $map in $position-property-map {
+    $p: map-get($map, property);
+    $c: map-get($map, class);
+    $v: map-get($map, values);
+
+    @each $index, $value in $v {
+        .#{$c}-#{$index} {
+            #{$p}: #{$value} !important;
+        }
+    }
+}

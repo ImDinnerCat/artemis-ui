@@ -1,0 +1,59 @@
+$spacing-property-map: (
+    "m": margin,
+    "mt": margin-top,
+    "mb": margin-bottom,
+    "my": (
+        margin-top,
+        margin-bottom
+    ),
+    "ms": margin-left,
+    "me": margin-right,
+    "mx": (
+        margin-left,
+        margin-right
+    ),
+
+    "p": padding,
+    "pt": padding-top,
+    "pb": padding-bottom,
+    "py": (
+        padding-top,
+        padding-bottom
+    ),
+    "ps": padding-left,
+    "pe": padding-right,
+    "px": (
+        padding-left,
+        padding-right
+    )
+);
+
+$spacing-sizes: (
+    0: 0,
+    1: $spacer * .25,
+    2: $spacer * .5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+    6: $spacer * 4.5,
+);
+
+@each $class, $value in $spacing-property-map {
+    // Positive spacing
+    @each $index, $size in $spacing-sizes {
+        .#{$class}-#{$index}{
+            @each $subvalue in $value {
+                #{$subvalue}: #{$size} !important;
+            }
+        }
+    }
+
+    // Negative spacing
+    @each $index, $size in $spacing-sizes {
+        .#{$class}-n#{$index}{
+            @each $subvalue in $value {
+                #{$subvalue}: -#{$size} !important;
+            }
+        }
+    }
+}

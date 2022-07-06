@@ -1,0 +1,52 @@
+$grid-steps: 12;
+
+$gutter-property-map: (
+    "g": gap,
+    "gy": row-gap,
+    "gx": column-gap
+);
+
+$gutter-sizes: (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3
+);
+
+.row{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+};
+
+@each $class, $value in $gutter-property-map {
+    @each $index, $gutter in $gutter-sizes {
+        .row.#{$class}-#{$index} {
+            #{$value}: #{$gutter};
+        }
+    }
+}
+
+@mixin cols {
+    @for $i from 1 through $grid-steps{
+        &-#{$i} {
+            // flex: 0 0 auto;
+            // width: #{ $i / $grid-steps * 100%};
+            grid-column: span #{$i};
+        }
+    }
+}
+
+.col{
+    @include cols;
+}
+
+@each $key, $breakpoint in $breakpoints {
+    @media (min-width: $breakpoint) {
+        .col-#{$key} {
+            @include cols;
+        }
+    }
+}

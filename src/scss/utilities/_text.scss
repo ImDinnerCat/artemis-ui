@@ -1,0 +1,35 @@
+$border-property-map: (
+    "text-align": (
+        property: text-align,
+        values: (
+            start: start,
+            center: center,
+            end: end
+        )
+    )
+);
+
+@mixin txt {
+    @each $key, $map in $border-property-map {
+        $p: map-get($map, property);
+        $v: map-get($map, values);
+
+        @each $index, $value in $v {
+            &-#{$index} {
+                #{$p}: #{$value} !important;
+            }
+        }
+    }
+}
+
+.text {
+    @include txt;
+}
+
+@each $key, $breakpoint in $breakpoints {
+    @media (min-width: $breakpoint) {
+        .text-#{$key} {
+            @include txt;
+        }
+    }
+}

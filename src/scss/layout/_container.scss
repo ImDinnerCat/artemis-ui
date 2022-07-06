@@ -1,0 +1,100 @@
+$container-sizing-map: (
+    "none": (
+        class: "",
+        values: (
+            xs: 100%,
+            sm: 540px,
+            md: 720px,
+            lg: 960px,
+            xl: 1140px,
+            xxl: 1320px
+        )
+    ),
+
+    "sm": (
+        class: "-sm",
+        values: (
+            xs: 100%,
+            sm: 540px,
+            md: 720px,
+            lg: 960px,
+            xl: 1140px,
+            xxl: 1320px
+        )
+    ),
+
+    "md": (
+        class: "-md",
+        values: (
+            xs: 100%,
+            sm: 100%,
+            md: 720px,
+            lg: 960px,
+            xl: 1140px,
+            xxl: 1320px
+        )
+    ),
+
+    "lg": (
+        class: "-lg",
+        values: (
+            xs: 100%,
+            sm: 100%,
+            md: 100%,
+            lg: 960px,
+            xl: 1140px,
+            xxl: 1320px
+        )
+    ),
+
+    "xl": (
+        class: "-xl",
+        values: (
+            xs: 100%,
+            sm: 100%,
+            md: 100%,
+            lg: 100%,
+            xl: 1140px,
+            xxl: 1320px
+        )
+    ),
+
+    "xxl": (
+        class: "-xxl",
+        values: (
+            xs: 100%,
+            sm: 100%,
+            md: 100%,
+            lg: 100%,
+            xl: 100%,
+            xxl: 1320px
+        )
+    ),
+
+    "fuild": (
+        class: "-fuild",
+        values: (
+            xs: 100%,
+            sm: 100%,
+            md: 100%,
+            lg: 100%,
+            xl: 100%,
+            xxl: 100%
+        )
+    )
+);
+
+@each $key, $map in $container-sizing-map {
+    $c: map-get($map, class);
+    $v: map-get($map, values);
+
+    @each $key, $breakpoint in $breakpoints {
+        @media (min-width: $breakpoint) {
+            .container#{$c} {
+                margin: 0 auto;
+                width: 100%;
+                max-width: #{map-get($v, $key)}
+            }
+        }
+    }
+}

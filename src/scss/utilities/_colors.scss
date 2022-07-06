@@ -1,0 +1,120 @@
+$color-map: (
+    "red": #eb3b5a,
+    "orange": #fa8231,
+    "yellow": #fed330,
+    "green": #26de81,
+    "turquoise": #2bcbba,
+    "light-blue": #45aaf2,
+    "blue": #4b7bec,
+    "purple": #a55eea,
+    "light-grey":#b8b8b8,
+    "grey": #808080,
+    "dark-grey": #474747,
+
+    "white": #fff,
+    "black": #000
+);
+
+$color--interval: 6.5%;
+
+@mixin color-utilities($property: "color") {
+    @each $name, $hex in $color-map {
+        &-#{$name} {
+            @if $name == "white" or $name == "black" {
+                #{$property}: $hex !important;
+            } @else {
+                &-100 {
+                    #{$property}: lighten($hex, $color--interval * 4) !important;
+                }
+                &-200 {
+                    #{$property}: lighten($hex, $color--interval * 3) !important;
+                }
+                &-300 {
+                    #{$property}: lighten($hex, $color--interval * 2) !important;
+                }
+                &-400 {
+                    #{$property}: lighten($hex, $color--interval) !important;
+                }
+                &-500 {
+                    #{$property}: $hex !important;
+                }
+                &-600 {
+                    #{$property}: darken($hex, $color--interval) !important;
+                }
+                &-700 {
+                    #{$property}: darken($hex, $color--interval * 2) !important;
+                }
+                &-800 {
+                    #{$property}: darken($hex, $color--interval * 3) !important;
+                }
+                &-900 {
+                    #{$property}: darken($hex, $color--interval * 4) !important;
+                }
+            }
+        }
+    }
+}
+
+@mixin hover-color-utilities($property: "color") {
+    @each $name, $hex in $color-map {
+        &-#{$name} {
+            @if $name == "white" or $name == "black" {
+                &:hover{
+                    #{$property}: $hex !important;
+                }
+            } @else {
+                &-100:hover {
+                    #{$property}: lighten($hex, $color--interval * 4) !important;
+                }
+                &-200:hover {
+                    #{$property}: lighten($hex, $color--interval * 3) !important;
+                }
+                &-300:hover {
+                    #{$property}: lighten($hex, $color--interval * 2) !important;
+                }
+                &-400:hover {
+                    #{$property}: lighten($hex, $color--interval) !important;
+                }
+                &-500:hover {
+                    #{$property}: $hex !important;
+                }
+                &-600:hover {
+                    #{$property}: darken($hex, $color--interval) !important;
+                }
+                &-700:hover {
+                    #{$property}: darken($hex, $color--interval * 2) !important;
+                }
+                &-800:hover {
+                    #{$property}: darken($hex, $color--interval * 3) !important;
+                }
+                &-900:hover {
+                    #{$property}: darken($hex, $color--interval * 4) !important;
+                }
+            }
+        }
+    }
+}
+
+.text {
+    @include color-utilities();
+}
+
+.hover\:text {
+    @include hover-color-utilities();
+}
+
+.bg {
+    @include color-utilities("background-color")
+}
+
+.hover\:bg {
+    @include hover-color-utilities("background-color")
+}
+
+.bc {
+    @include color-utilities("border-color")
+}
+
+.hover\:bc {
+    @include hover-color-utilities("border-color")
+}

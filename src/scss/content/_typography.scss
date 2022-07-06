@@ -1,0 +1,33 @@
+$headings: "h1", "h2", "h3", "h4", "h5", "h6";
+
+$heading-font-weight: 700;
+$display-font-weight: 200;
+
+$font-sizes: (
+    1: $font-size-base * 2.5,
+    2: $font-size-base * 2,
+    3: $font-size-base * 1.75,
+    4: $font-size-base * 1.5,
+    5: $font-size-base * 1.25,
+    6: $font-size-base
+);
+
+@each $index, $size in $font-sizes {
+    .h#{$index}, h#{$index} {
+        font-size: #{$size * $font-size-factor};
+        font-weight: $heading-font-weight;
+        margin: 0;
+        margin-top: $spacer * 0.5;
+        margin-bottom: $spacer * 0.5;
+    }
+}
+
+@each $index, $size in $font-sizes {
+    .display-#{$index}, h#{$index}.display {
+        font-size: #{$size * $font-size-factor};
+        font-weight: $display-font-weight;
+        margin: 0;
+        margin-top: $spacer * 0.5;
+        margin-bottom: $spacer * 0.5;
+    }
+}
